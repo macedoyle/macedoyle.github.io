@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Kenzie Doyle</title>
+  <meta name="description" content="Kenzie Doyle is a creative advertising designer and media photographer, MSU '25, available for full-time and freelance opportunities." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .about-page-hero {
+      padding-top: 160px;
+      padding-bottom: 80px;
+      padding-left: clamp(24px, 5vw, 80px);
+      padding-right: clamp(24px, 5vw, 80px);
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .about-page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 9vw, 130px);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+    }
+    .about-page-hero h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--red);
+    }
+    .about-full {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 80px) var(--section-y);
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+    }
+    .about-full-text {}
+    .about-full-text p {
+      font-size: 16px;
+      line-height: 1.9;
+      font-weight: 300;
+      color: #3A3A3A;
+      margin-bottom: 20px;
+    }
+    .about-full-photo {
+      position: sticky;
+      top: 120px;
+    }
+    .about-full-photo-img {
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: var(--light-border);
+      margin-bottom: 20px;
+    }
+    .about-full-photo-caption {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--mid-gray);
+    }
+    .about-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--light-border);
+      margin: 48px 0;
+    }
+    .credentials {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 80px) var(--section-y);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(24px, 4vw, 60px);
+    }
+    .credential-block {}
+    .credential-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+    .credential-item {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--light-border);
+    }
+    .credential-item:first-of-type { border-top: 1px solid var(--light-border); }
+    .credential-item-title {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .credential-item-sub {
+      font-size: 12px;
+      color: var(--mid-gray);
+      font-weight: 300;
+    }
+    .resume-cta {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 80px) var(--section-y);
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    @media (max-width: 900px) {
+      .about-full { grid-template-columns: 1fr; }
+      .about-full-photo { position: static; }
+      .credentials { grid-template-columns: 1fr; }
+      .resume-cta { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">kenzie <em style="font-style:italic; color:var(--red);">doyle</em></a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Hero -->
+  <div class="about-page-hero">
+    <p class="section-label reveal" style="margin-bottom:32px;">About</p>
+    <h1>
+      A creative who<br>
+      thinks in <em>concepts</em><br>
+      and shoots in<br>
+      <em>frames.</em>
+    </h1>
+  </div>
+
+  <!-- Body -->
+  <div class="about-full">
+    <div class="about-full-text">
+      <p class="reveal">
+        I'm Kenzie Doyle — a creative advertising designer and media photographer
+        who just finished four years at Michigan State University diving headfirst
+        into the intersection of strategy, storytelling, and visual execution.
+      </p>
+      <p class="reveal">
+        My background in Creative Advertising means I don't just make things
+        look good — I make them make sense. I'm trained to think about the
+        brief before I open any software, to understand who I'm talking to and
+        why they should care, and to build visual systems that serve a purpose
+        beyond aesthetics. My minor in Media Photography adds a different kind of
+        fluency: the patience to build a set, to wait for the light, to understand
+        that the difference between a good image and a great one is often invisible
+        until it isn't.
+      </p>
+      <p class="reveal">
+        In school, I worked on real clients alongside conceptual campaigns — producing
+        educational videos for the MSU Water Alliance, shooting product campaigns from
+        scratch, redesigning how legacy brands could look if they were brave enough to
+        update. I interned and worked as a videographer for 42pointSEVEN, which meant
+        actual deadlines, actual clients, and actual accountability.
+      </p>
+      <p class="reveal">
+        I'm most at home on projects that require me to do more than one thing — to
+        concept and design, to art direct and shoot, to think strategically and then
+        go make the thing. I thrive when the work asks for both sides of my brain.
+      </p>
+      <p class="reveal">
+        I'm currently looking for full-time opportunities in creative advertising,
+        brand design, or content production — at agencies or in-house brand teams
+        where the work is thoughtful and the people give a damn about what they're making.
+      </p>
+
+      <div class="about-divider"></div>
+
+      <div class="skills-list reveal">
+        <span class="skill-tag">Brand Strategy</span>
+        <span class="skill-tag">Campaign Concepting</span>
+        <span class="skill-tag">Art Direction</span>
+        <span class="skill-tag">Editorial Layout Design</span>
+        <span class="skill-tag">Product Photography</span>
+        <span class="skill-tag">Set Design</span>
+        <span class="skill-tag">Video Production</span>
+        <span class="skill-tag">Video Editing</span>
+        <span class="skill-tag">Digital / UI Design</span>
+        <span class="skill-tag">Adobe Creative Suite</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Creative Direction</span>
+      </div>
+    </div>
+
+    <div class="about-full-photo reveal">
+      <!--
+        REPLACE THIS with your actual portrait photo:
+        <div class="about-full-photo-img">
+          <img src="images/kenzie-about.jpg" alt="Kenzie Doyle">
+        </div>
+      -->
+      <div class="about-full-photo-img">
+        <div class="about-photo-placeholder" style="height:100%;">
+          <p>Add your portrait photo here</p>
+        </div>
+      </div>
+      <p class="about-full-photo-caption">Kenzie Doyle · Michigan State University '25</p>
+    </div>
+  </div>
+
+  <!-- Credentials Grid -->
+  <div class="credentials">
+    <div class="credential-block reveal">
+      <p class="credential-label">Education</p>
+      <div class="credential-item">
+        <p class="credential-item-title">Michigan State University</p>
+        <p class="credential-item-sub">B.A. Creative Advertising<br>Minor in Media Photography · Class of 2025</p>
+      </div>
+    </div>
+
+    <div class="credential-block reveal">
+      <p class="credential-label">Experience</p>
+      <div class="credential-item">
+        <p class="credential-item-title">42pointSEVEN</p>
+        <p class="credential-item-sub">Videographer — filming, editing, client production · 2024</p>
+      </div>
+      <div class="credential-item">
+        <p class="credential-item-title">MSU Water Alliance</p>
+        <p class="credential-item-sub">Video Production (client project) · 2024</p>
+      </div>
+      <!--
+        Add more experience items here as needed:
+        <div class="credential-item">
+          <p class="credential-item-title">Company Name</p>
+          <p class="credential-item-sub">Role · Year</p>
+        </div>
+      -->
+    </div>
+
+    <div class="credential-block reveal">
+      <p class="credential-label">Tools & Software</p>
+      <div class="credential-item">
+        <p class="credential-item-title">Adobe Creative Suite</p>
+        <p class="credential-item-sub">Photoshop, Illustrator, InDesign, Premiere Pro, Lightroom, After Effects</p>
+      </div>
+      <div class="credential-item">
+        <p class="credential-item-title">Figma</p>
+        <p class="credential-item-sub">UI design, prototyping, brand systems</p>
+      </div>
+      <div class="credential-item">
+        <p class="credential-item-title">Photography & Video</p>
+        <p class="credential-item-sub">DSLR / Mirrorless, studio + on-location, set design</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resume CTA -->
+  <div class="resume-cta">
+    <!--
+      UPDATE THE HREF with your actual resume link (Google Drive, Dropbox, or a PDF in the same folder):
+      <a href="kenzie-doyle-resume.pdf" class="btn-primary" download>
+    -->
+    <a href="#" class="btn-primary reveal">
+      Download Resume
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M7 1v8M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="mailto:mac.e.doyle@gmail.com" class="btn-secondary reveal">Or just send me an email →</a>
+  </div>
+
+  <!-- Contact / Footer -->
+  <section id="contact" class="contact-section">
+    <div class="contact-inner">
+      <div>
+        <p class="contact-label">Let's Work Together</p>
+        <h2 class="contact-headline">Say<br><em>hello.</em></h2>
+        <a href="mailto:mac.e.doyle@gmail.com" class="contact-email">
+          mac.e.doyle@gmail.com →
+        </a>
+      </div>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/kenziedoyle" class="contact-link" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://www.instagram.com/kenziedoyle" class="contact-link" target="_blank" rel="noopener">Instagram ↗</a>
+        <a href="#" class="contact-link">Resume ↓</a>
+      </div>
+    </div>
+  </section>
+  <footer class="footer-bottom">
+    <p class="footer-copy">© 2025 Kenzie Doyle. All rights reserved.</p>
+    <p class="footer-copy">Built from scratch.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
