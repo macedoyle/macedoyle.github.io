@@ -151,9 +151,7 @@ h2.s-title { font-family:var(--serif); font-weight:300; font-size:clamp(2.5rem,5
 .wtitle { font-family:var(--serif); font-size:1.15rem; font-weight:400; margin-top:.2rem; color:var(--black); line-height:1.2; }
 .wmeta { display:flex; align-items:center; justify-content:space-between; margin-top:.4rem; }
 .wyear { font-size:.58rem; letter-spacing:.1em; color:var(--muted); }
-.wbadge { display:inline-block; font-size:.5rem; letter-spacing:.12em; text-transform:uppercase; padding:.18rem .5rem; border:1px solid; }
-.wbadge.concept { color:rgba(26,24,20,.35); border-color:rgba(26,24,20,.12); }
-.wbadge.client { color:var(--red); border-color:rgba(184,41,26,.22); }
+.wbadge { display:inline-block; font-size:.5rem; letter-spacing:.12em; text-transform:uppercase; padding:.18rem .5rem; border:1px solid; color:var(--red); border-color:rgba(184,41,26,.25); background:rgba(184,41,26,.04); }
 
 /* MODAL */
 .modal-bg { position:fixed; inset:0; background:rgba(26,24,20,.85); z-index:500; display:flex; align-items:center; justify-content:center; padding:2rem; opacity:0; pointer-events:none; transition:opacity .3s; }
@@ -264,7 +262,7 @@ footer p { font-size:.6rem; letter-spacing:.1em; color:rgba(252,252,250,.25); fo
   <p class="hero-eyebrow">Creative Advertising · Media Photography · <span>MSU '25</span></p>
   <h1 class="hero-name">kenzie <em class="italic">doyle</em></h1>
   <div class="hero-bottom">
-    <p class="hero-desc">I make brands feel like something. From campaign strategy to the final frame — I think in concepts and execute in visuals.</p>
+    <p class="hero-desc">Recent graduate in Creative Advertising and Media Photography from Michigan State University, with hands-on experience in brand design, photography, and video production.</p>
     <div class="hero-btns">
       <a href="#work" class="btn-dark">See My Work →</a>
       <a href="#about" class="btn-ghost">About Me</a>
@@ -318,74 +316,9 @@ footer p { font-size:.6rem; letter-spacing:.1em; color:rgba(252,252,250,.25); fo
 
   <div class="work-grid">
 
-    <div class="wi rv" data-category="brand" data-project="vera">
+    <div class="wi rv" data-category="video" data-project="trustees" style="cursor:pointer;" onclick="window.location.href='msu-trustees.html'">
       <div class="wthumb">
-        <!-- SWAP: <img src="images/vera-bradley.jpg" alt="Vera Bradley Brand Refresh"> -->
-        <div class="wph">VB</div>
-        <div class="woverlay"><span class="warrow">View Project ↗</span></div>
-      </div>
-      <div class="winfo">
-        <p class="wcat">Brand Identity · Editorial · Digital</p>
-        <p class="wtitle">Vera Bradley</p>
-        <div class="wmeta">
-          <span class="wyear">2024</span>
-          <span class="wbadge concept">Conceptual</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="wi rv" data-category="campaign" data-project="kodak">
-      <div class="wthumb">
-        <!-- SWAP: <img src="images/kodak-collective.jpg" alt="Kodak Collective Campaign"> -->
-        <div class="wph">KK</div>
-        <div class="woverlay"><span class="warrow">View Project ↗</span></div>
-      </div>
-      <div class="winfo">
-        <p class="wcat">Campaign · Product Design · UX</p>
-        <p class="wtitle">Kodak Collective</p>
-        <div class="wmeta">
-          <span class="wyear">2024</span>
-          <span class="wbadge concept">Conceptual</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="wi rv" data-category="photo" data-project="twochicks">
-      <div class="wthumb">
-        <!-- SWAP: <img src="images/two-chicks.jpg" alt="Two Chicks Product Photography"> -->
-        <div class="wph">TC</div>
-        <div class="woverlay"><span class="warrow">View Project ↗</span></div>
-      </div>
-      <div class="winfo">
-        <p class="wcat">Product Photography · Set Design</p>
-        <p class="wtitle">Two Chicks</p>
-        <div class="wmeta">
-          <span class="wyear">2024</span>
-          <span class="wbadge client">Client Work</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="wi rv" data-category="brand" data-project="petal">
-      <div class="wthumb">
-        <!-- SWAP: <img src="images/petal-house.jpg" alt="Petal House Restaurant Brand"> -->
-        <div class="wph">PH</div>
-        <div class="woverlay"><span class="warrow">View Project ↗</span></div>
-      </div>
-      <div class="winfo">
-        <p class="wcat">Brand Identity · Experience Design</p>
-        <p class="wtitle">Petal House</p>
-        <div class="wmeta">
-          <span class="wyear">2024</span>
-          <span class="wbadge concept">Conceptual</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="wi rv" data-category="video" data-project="trustees">
-      <div class="wthumb">
-        <!-- SWAP: <img src="images/msu-trustees.jpg" alt="MSU Board of Trustees Video"> -->
-        <div class="wph">MS</div>
+        <video src="videos/BoT-cover.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
         <div class="woverlay"><span class="warrow">View Project ↗</span></div>
       </div>
       <div class="winfo">
@@ -398,10 +331,39 @@ footer p { font-size:.6rem; letter-spacing:.1em; color:rgba(252,252,250,.25); fo
       </div>
     </div>
 
-    <div class="wi rv" data-category="video" data-project="water">
+    <div class="wi rv" data-category="campaign" data-project="kodak" style="cursor:pointer;" onclick="window.location.href='kodak.html'">
       <div class="wthumb">
-        <!-- SWAP: <img src="images/water-alliance.jpg" alt="MSU Water Alliance Video Series"> -->
-        <div class="wph">WA</div>
+        <video src="videos/kodak-cover.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
+        <div class="woverlay"><span class="warrow">View Project ↗</span></div>
+      </div>
+      <div class="winfo">
+        <p class="wcat">Campaign · Product Design · UX</p>
+        <p class="wtitle">Kodak Collective</p>
+        <div class="wmeta">
+          <span class="wyear">2024</span>
+          <span class="wbadge concept">Conceptual</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wi rv" data-category="photo" data-project="twochicks" style="cursor:pointer;" onclick="window.location.href='two-chicks.html'">
+      <div class="wthumb">
+        <img src="images/twochicks-cover.jpg" alt="Two Chicks Product Photography">
+        <div class="woverlay"><span class="warrow">View Project ↗</span></div>
+      </div>
+      <div class="winfo">
+        <p class="wcat">Product Photography · Set Design</p>
+        <p class="wtitle">Two Chicks</p>
+        <div class="wmeta">
+          <span class="wyear">2024</span>
+          <span class="wbadge client">Client Work</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wi rv" data-category="video" data-project="water" style="cursor:pointer;" onclick="window.location.href='msu-water-alliance.html'">
+      <div class="wthumb">
+        <video src="videos/water-alliance-cover.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
         <div class="woverlay"><span class="warrow">View Project ↗</span></div>
       </div>
       <div class="winfo">
@@ -410,6 +372,36 @@ footer p { font-size:.6rem; letter-spacing:.1em; color:rgba(252,252,250,.25); fo
         <div class="wmeta">
           <span class="wyear">2024</span>
           <span class="wbadge client">Client Work</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wi rv" data-category="brand" data-project="vera" style="cursor:pointer;" onclick="window.location.href='vera-bradley.html'">
+      <div class="wthumb">
+        <img src="images/verabradley-cover.jpg" alt="Vera Bradley Brand Refresh">
+        <div class="woverlay"><span class="warrow">View Project ↗</span></div>
+      </div>
+      <div class="winfo">
+        <p class="wcat">Brand Identity · Editorial · Digital</p>
+        <p class="wtitle">Vera Bradley</p>
+        <div class="wmeta">
+          <span class="wyear">2024</span>
+          <span class="wbadge concept">Conceptual</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wi rv" data-category="photo" data-project="photography" style="cursor:pointer;" onclick="window.location.href='photography.html'">
+      <div class="wthumb">
+        <img src="images/photo-cover.jpg" alt="Photography">
+        <div class="woverlay"><span class="warrow">View Project ↗</span></div>
+      </div>
+      <div class="winfo">
+        <p class="wcat">Photography</p>
+        <p class="wtitle">Photo Work</p>
+        <div class="wmeta">
+          <span class="wyear">2024</span>
+          <span class="wbadge client">Personal Work</span>
         </div>
       </div>
     </div>
@@ -436,11 +428,13 @@ footer p { font-size:.6rem; letter-spacing:.1em; color:rgba(252,252,250,.25); fo
   <div class="about-grid">
     <div class="rv">
       <p class="s-label">About Me</p>
-      <h2 class="s-title">Designer,<br>Storyteller,<br>Maker.</h2>
+      <h2 class="s-title">Strategy,<br>Design,<br>Production.</h2>
       <div class="about-body">
-        <p>Hi, I'm Kenzie — a multi-disciplinary creative with a focus on brand identity, campaign design, photography, and video. I work at the intersection of strategic thinking and visual execution, building work that communicates something true.</p>
-        <p>My projects range from full brand systems and editorial spreads to real client videos — I'm just as comfortable concepting a campaign as I am behind a camera or in the edit bay.</p>
-        <p>MSU Creative Advertising & Media Photography graduate. Based in Michigan. Open to freelance and full-time opportunities.</p>
+        <p>Hi, I’m Kenzie!</p>
+        <p>I'm a recent MSU graduate with a BFA in Creative Advertising and a minor in Media Photography. My skills range from brand identity and creative campaigns to visual design, photography, and video production.</p>
+        <p>During my time as a videographer for 42pointSEVEN, an integrated marketing agency, I worked on a variety of projects such as creating a short form institutional identity video for the MSU Board of Trustees, editing employee on-boarding training videos for Kiwanis International, and conducting a creative rescope and new style for MSU Water Alliance’s environmental awareness videos. </p>
+        <p>Alongside videography, I worked on MSU’s student-run fashion, beauty, and lifestyle publication, VIM, as a member of the graphic design team. I worked to help create the Fall 2025 issue. I also had the opportunity to join Gamma Epsilon Tau, MSU’s first Art and Design Fraternity, where I was able to grow my design skills and immerse myself into a creativity community through bi-weekly workshops and events. .</p>
+        <p>I enjoy the full creative process, from strategy and concept to final production, and I'm always ready for a new challenge. Based in Michigan, I am actively seeking full-time creative roles and open to freelance work.</p>
       </div>
       <div class="skills-list">
         <span class="sk">Brand Identity</span>
@@ -458,14 +452,7 @@ footer p { font-size:.6rem; letter-spacing:.1em; color:rgba(252,252,250,.25); fo
     <div class="about-right rv">
       <div class="about-photo">
         <!-- SWAP: <img src="images/about-photo.jpg" alt="Kenzie Doyle"> -->
-        <div class="about-photo-ph">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="18" r="8"/><path d="M8 42c0-8.837 7.163-16 16-16s16 7.163 16 16"/></svg>
-          <span>Your photo here</span>
-        </div>
-      </div>
-      <div class="about-quote">
-        <p>"I think in concepts and execute in visuals."</p>
-        <cite>— Kenzie Doyle</cite>
+        <img src="images/headshot.jpg" alt="Kenzie Doyle">
       </div>
     </div>
   </div>
@@ -475,27 +462,23 @@ footer p { font-size:.6rem; letter-spacing:.1em; color:rgba(252,252,250,.25); fo
 <section id="contact">
   <div class="contact-grid">
     <div class="rv">
-      <p class="s-label">Get in Touch</p>
-      <h2 class="s-title">Let's Work<br>Together.</h2>
-      <p>Open to freelance projects, brand collaborations, and full-time creative opportunities. Don't be a stranger.</p>
-      <!-- SWAP: your real email -->
-      <a href="mailto:hello@kenziedoyle.com" class="c-email">hello@kenziedoyle.com</a>
+      <p class="s-label">Contact</p>
+      <h2 class="s-title">Get in Touch.</h2>
+      <p style="margin-top:2rem;">Currently open to full-time roles and freelance work. Feel free to reach out.</p>
+      <a href="mailto:mac.e.doyle@gmail.com" class="c-email">mac.e.doyle@gmail.com</a>
       <div class="c-socials">
-        <!-- SWAP: your real social URLs -->
-        <a href="#" class="c-social">Instagram</a>
-        <a href="#" class="c-social">LinkedIn</a>
-        <a href="#" class="c-social">Behance</a>
-        <a href="#" class="c-social">Dribbble</a>
+        <a href="https://www.linkedin.com/in/mac-doyle" class="c-social" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </div>
     <div class="rv">
-      <form id="cf" onsubmit="hf(event)">
+      <form id="cf" action="https://formspree.io/f/mwvayrln" method="POST">
+        <input type="hidden" name="_subject" value="New message from portfolio">
         <div class="f-row">
-          <div class="fg"><label for="nm">Name</label><input type="text" id="nm" placeholder="Your name" required></div>
-          <div class="fg"><label for="em">Email</label><input type="email" id="em" placeholder="you@email.com" required></div>
+          <div class="fg"><label for="nm">Name</label><input type="text" id="nm" name="name" placeholder="Your name" required></div>
+          <div class="fg"><label for="em">Email</label><input type="email" id="em" name="email" placeholder="Your email" required></div>
         </div>
-        <div class="fg"><label for="sb">Subject</label><input type="text" id="sb" placeholder="Project enquiry, collab, etc."></div>
-        <div class="fg"><label for="mg">Message</label><textarea id="mg" placeholder="Tell me about your project…" required></textarea></div>
+        <div class="fg"><label for="sb">Subject</label><input type="text" id="sb" name="subject" placeholder="Subject"></div>
+        <div class="fg"><label for="mg">Message</label><textarea id="mg" name="message" placeholder="Your message" required></textarea></div>
         <button type="submit" class="sub-btn">Send Message →</button>
         <p id="fs">Thanks — I'll be in touch soon.</p>
       </form>
@@ -555,7 +538,7 @@ const P={
   kodak:{cat:'Campaign · Product Design · UX',title:'Kodak Collective — Campaign + App',type:'Conceptual Project',ph:'KK',
     body:'<p>A creative campaign and digital-physical ecosystem designed to revitalize Kodak for a modern audience. The central concept — Kodak Collective — blends film nostalgia with the social dynamics of modern platforms.</p><p>The app concept lets users upload photos, explore galleries filtered by camera, film, and location, follow friends, and discover featured artists. A companion physical product bridges digital and tangible, positioning Kodak as a community-driven creative brand.</p>',
     skills:['Creative Strategy','Campaign Ideation','UX / UI Design','Product Thinking','Brand Direction']},
-  petal:{cat:'Brand Identity · Experience Design',title:'Petal House — Restaurant Brand',type:'Conceptual Project',ph:'PH',
+  photography:{cat:'Photography',title:'Photo Work',type:'Personal Work',ph:'PH',
     body:'<p>A full brand world built from scratch for Petal House — a greenhouse-inspired, upscale dining concept. The brief was to design not just a logo, but an entire sensory and visual experience: atmosphere, materials, menu system, and digital presence.</p><p>The brand draws on glasshouse architecture, botanical textures, and refined natural materials to create a cohesive identity that feels simultaneously organic and elevated.</p>',
     skills:['Brand Creation','Experience Design','Visual Storytelling','Menu Design','Web Concept']},
   twochicks:{cat:'Product Photography · Set Design',title:'Two Chicks — Product Shoot',type:'Client Work',ph:'TC',

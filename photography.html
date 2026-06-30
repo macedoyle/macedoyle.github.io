@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photography — Kenzie Doyle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #FCFCFA;
+  --white-mid: #f2f0eb;
+  --black: #1a1814;
+  --red: #b8291a;
+  --muted: #8a8478;
+  --border: rgba(26,24,20,.1);
+  --serif: 'Cormorant Garamond', serif;
+  --sans: 'Jost', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background:var(--white); color:var(--black); font-family:var(--sans); font-size:16px; line-height:1.6; overflow-x:hidden; cursor:none; }
+
+/* CURSOR */
+.cur { position:fixed; width:8px; height:8px; background:var(--red); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .15s,height .15s; }
+.cur-r { position:fixed; width:32px; height:32px; border:1px solid var(--red); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); opacity:.35; transition:width .2s,height .2s; }
+body:has(a:hover) .cur, body:has(button:hover) .cur { width:16px; height:16px; }
+body:has(a:hover) .cur-r, body:has(button:hover) .cur-r { width:48px; height:48px; opacity:.55; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:1.75rem 3.5rem; background:linear-gradient(to bottom,var(--white) 70%,transparent); }
+.nav-logo { font-family:var(--serif); font-size:1.1rem; font-weight:400; color:var(--black); text-decoration:none; letter-spacing:.02em; }
+.nav-logo em { color:var(--red); font-style:italic; }
+.nav-links { display:flex; gap:2.5rem; align-items:center; }
+.nav-links a { font-size:.7rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--black); text-decoration:none; opacity:.45; transition:opacity .2s; }
+.nav-links a:hover { opacity:1; }
+.nav-back { display:flex; align-items:center; gap:.5rem; font-size:.68rem; font-weight:500; letter-spacing:.15em; text-transform:uppercase; color:var(--black); text-decoration:none; opacity:.45; transition:opacity .2s; }
+.nav-back:hover { opacity:1; }
+.nav-back::before { content:'←'; font-size:.8rem; }
+
+/* PAGE HERO */
+.page-hero { padding:11rem 5rem 4rem; border-bottom:1px solid var(--border); }
+.page-label { font-size:.6rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase; color:var(--red); display:flex; align-items:center; gap:.75rem; margin-bottom:1.5rem; opacity:0; animation:fi .8s .2s forwards; }
+.page-label::before { content:''; width:24px; height:1px; background:var(--red); }
+.page-title { font-family:var(--serif); font-size:clamp(4rem,8vw,7.5rem); font-weight:300; line-height:.88; letter-spacing:-.01em; opacity:0; animation:fi .9s .4s forwards; }
+.page-title em { font-style:italic; color:var(--red); }
+
+/* SECTION WRAPPER */
+.section-block { padding:5rem 5rem; border-bottom:1px solid var(--border); }
+.section-block:last-of-type { border-bottom:none; }
+.section-header { margin-bottom:2.5rem; }
+.section-heading { font-family:var(--serif); font-size:clamp(2rem,4vw,3rem); font-weight:300; line-height:1; margin-bottom:.6rem; }
+.section-caption { font-size:.82rem; font-weight:300; color:var(--muted); max-width:560px; line-height:1.8; }
+
+/* DIVIDER LABEL */
+.category-divider { padding:3.5rem 5rem 0; }
+.category-divider h2 { font-family:var(--serif); font-size:clamp(1.5rem,3vw,2.2rem); font-weight:300; color:var(--black); opacity:0; }
+.category-divider h2.on { opacity:1; }
+
+/* PHOTO GRID — 3 col uniform */
+.photo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+.photo-grid img { width:100%; display:block; object-fit:cover; aspect-ratio:3/4; }
+
+/* PHOTO GRID — landscape mix */
+.photo-grid-land { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+.photo-grid-land img { width:100%; display:block; object-fit:cover; aspect-ratio:4/3; }
+
+/* PHOTO GRID — 2 col */
+.photo-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.photo-grid-2 img { width:100%; display:block; object-fit:cover; aspect-ratio:4/3; }
+
+/* PHOTO GRID — 2 col creative favorites */
+.photo-grid-cf { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.photo-grid-cf img { width:100%; height:100%; display:block; object-fit:cover; }
+.photo-grid-cf img:not(.cf-portrait) { aspect-ratio:3/2; }
+.photo-grid-cf .cf-portrait { grid-row:span 2; }
+
+/* VIDEOGRAPHY SECTION */
+.video-block { padding:5rem 5rem; border-bottom:1px solid var(--border); }
+.video-block:last-of-type { border-bottom:none; }
+.video-header { margin-bottom:2.5rem; }
+.video-header .section-heading { font-family:var(--serif); font-size:clamp(2rem,4vw,3rem); font-weight:300; line-height:1; margin-bottom:.6rem; }
+.video-header p { font-size:.82rem; font-weight:300; color:var(--muted); max-width:560px; line-height:1.8; }
+.video-wrapper { width:100%; background:#000; border-radius:2px; overflow:hidden; }
+.video-wrapper video { width:100%; display:block; max-height:75vh; object-fit:contain; }
+
+/* MAJOR SECTION LABEL */
+.major-label { padding:5rem 5rem 0; }
+.major-label h2 { font-family:var(--serif); font-size:clamp(2.5rem,5vw,4.5rem); font-weight:300; line-height:1; }
+.major-label h2 em { font-style:italic; color:var(--red); }
+.major-divider { border:none; border-top:1px solid var(--border); margin:3rem 0 0; }
+
+/* NEXT PROJECT */
+.next-project { padding:5rem 3.5rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:2rem; }
+.next-label { font-size:.58rem; font-weight:500; letter-spacing:.25em; text-transform:uppercase; color:var(--muted); margin-bottom:.75rem; }
+.next-title { font-family:var(--serif); font-size:clamp(2rem,4vw,3.5rem); font-weight:300; color:var(--black); text-decoration:none; display:block; transition:color .2s; }
+.next-title:hover { color:var(--red); }
+
+/* FOOTER */
+footer { background:var(--black); padding:2rem 3.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+footer p { font-size:.6rem; letter-spacing:.1em; color:rgba(252,252,250,.25); font-weight:300; }
+.f-logo { font-family:var(--serif); font-size:1.1rem; font-weight:300; color:rgba(252,252,250,.18); }
+.f-logo em { font-style:italic; color:rgba(184,41,26,.45); }
+
+/* REVEAL */
+.rv { opacity:0; transform:translateY(22px); transition:opacity .8s ease,transform .8s ease; }
+.rv.on { opacity:1; transform:translateY(0); }
+
+@keyframes fi { from{opacity:0;}to{opacity:1;} }
+
+@media(max-width:900px){
+  nav { padding:1.25rem 1.5rem; }
+  .page-hero,.section-block,.category-divider,.major-label,.video-block,.next-project { padding-left:1.5rem; padding-right:1.5rem; }
+  .photo-grid,.photo-grid-land { grid-template-columns:1fr 1fr; }
+  .photo-grid-2 { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="cur" id="c"></div>
+<div class="cur-r" id="cr"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">kenzie <em>doyle</em></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-back">All Work</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <p class="page-label">Photography · Videography</p>
+  <h1 class="page-title">Photo &<br><em>Film</em></h1>
+</section>
+
+<!-- ————————————————————————
+     PHOTOGRAPHY
+———————————————————————— -->
+<div class="major-label rv">
+  <h2>Photography</h2>
+  <hr class="major-divider">
+</div>
+
+<!-- GRADUATION PHOTOGRAPHY -->
+<div class="section-block rv">
+  <div class="section-header">
+    <h2 class="section-heading">Graduation Photography</h2>
+    <p class="section-caption">Portrait sessions capturing one of life's bigger milestones — shot on location with an emphasis on natural light and genuine moments.</p>
+  </div>
+  <div class="photo-grid">
+    <img src="images/grad-1.JPG" alt="Graduation Portrait">
+    <img src="images/grad-2.jpg" alt="Graduation Portrait">
+    <img src="images/grad-4.JPG" alt="Graduation Portrait">
+    <img src="images/grad-6.jpg" alt="Graduation Portrait">
+    <img src="images/grad-7.jpg" alt="Graduation Portrait">
+    <img src="images/grad-8.jpg" alt="Graduation Portrait">
+    <img src="images/grad-9.JPG" alt="Graduation Portrait">
+    <img src="images/grad-10.JPG" alt="Graduation Portrait">
+    <img src="images/grad-11.JPG" alt="Graduation Portrait">
+  </div>
+</div>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:0 5rem;">
+
+<!-- STILL HERE -->
+<div class="section-block rv">
+  <div class="section-header">
+    <h2 class="section-heading">Still Here</h2>
+    <p class="section-caption">A shoot at Capital Area Humane Society — every dog waiting, every dog worth it.</p>
+  </div>
+  <div class="photo-grid-2">
+    <img src="images/cahs-1.jpg" alt="CAHS Dog">
+    <img src="images/cahs-2.jpg" alt="CAHS Dog">
+    <img src="images/cahs-3.jpg" alt="CAHS Dog">
+    <img src="images/cahs-4.jpg" alt="CAHS Dog">
+    <img src="images/cahs-5.jpg" alt="CAHS Dog">
+    <img src="images/cahs-6.jpg" alt="CAHS Dog">
+    <img src="images/cahs-7.jpg" alt="CAHS Dog">
+    <img src="images/cahs-8.jpg" alt="CAHS Dog">
+  </div>
+</div>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:0 5rem;">
+
+<!-- FOUND ON ANNA MARIA -->
+<div class="section-block rv">
+  <div class="section-header">
+    <h2 class="section-heading">Found on Anna Maria</h2>
+    <p class="section-caption">The details a place leaves behind when no one is performing for the camera.</p>
+  </div>
+  <div class="photo-grid-2">
+    <img src="images/anna-maria-1.jpg" alt="Anna Maria Island">
+    <img src="images/anna-maria-2.jpg" alt="Anna Maria Island">
+    <img src="images/anna-maria-3.jpg" alt="Anna Maria Island">
+    <img src="images/anna-maria-4.jpg" alt="Anna Maria Island">
+    <img src="images/anna-maria-5.jpg" alt="Anna Maria Island">
+    <img src="images/anna-maria-6.jpg" alt="Anna Maria Island">
+    <img src="images/anna-maria-7.jpg" alt="Anna Maria Island">
+    <img src="images/anna-maria-8.jpg" alt="Anna Maria Island">
+  </div>
+</div>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:0 5rem;">
+
+<!-- CREATIVE FAVORITES -->
+<div class="section-block rv">
+  <div class="section-header">
+    <h2 class="section-heading">Creative Favorites</h2>
+    <p class="section-caption">A personal edit — images that stuck.</p>
+  </div>
+  <div class="photo-grid-cf">
+    <img src="images/creative-favs-1.jpg" alt="Creative Favorite">
+    <img src="images/creative-favs-9.JPG" alt="Creative Favorite">
+    <img src="images/creative-favs-2.jpg" alt="Creative Favorite">
+    <img src="images/creative-favs-10.JPG" alt="Creative Favorite">
+    <img src="images/creative-favs-3.jpg" alt="Creative Favorite">
+    <img src="images/creative-favs-4.jpg" alt="Creative Favorite" class="cf-portrait">
+    <img src="images/creative-favs-5.png" alt="Creative Favorite">
+    <img src="images/creative-favs-7.JPG" alt="Creative Favorite">
+    <img src="images/creative-favs-11.jpg" alt="Creative Favorite">
+    <img src="images/creative-favs-8.JPG" alt="Creative Favorite">
+    <img src="images/creative-favs-12.jpg" alt="Creative Favorite">
+  </div>
+</div>
+
+<!-- NEXT PROJECT -->
+<div class="next-project rv">
+  <div>
+    <p class="next-label">Next Project</p>
+    <a href="vera-bradley.html" class="next-title">Vera Bradley →</a>
+  </div>
+  <a href="index.html" class="nav-back" style="opacity:.45;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;color:var(--black);display:flex;align-items:center;gap:.5rem;transition:opacity .2s;">← Back to All Work</a>
+</div>
+
+<footer>
+  <p>© 2026 Kenzie Doyle. All rights reserved.</p>
+  <span class="f-logo">kenzie <em>doyle</em></span>
+  <p>Michigan · Open to opportunities</p>
+</footer>
+
+<script>
+const C=document.getElementById('c'),R=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;C.style.left=mx+'px';C.style.top=my+'px';});
+(function t(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;R.style.left=rx+'px';R.style.top=ry+'px';requestAnimationFrame(t);})();
+
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});
+},{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>

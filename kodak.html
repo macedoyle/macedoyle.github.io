@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kodak Collective — Kenzie Doyle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #FCFCFA;
+  --white-mid: #f2f0eb;
+  --black: #1a1814;
+  --red: #b8291a;
+  --muted: #8a8478;
+  --border: rgba(26,24,20,.1);
+  --serif: 'Cormorant Garamond', serif;
+  --sans: 'Jost', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background:var(--white); color:var(--black); font-family:var(--sans); font-size:16px; line-height:1.6; overflow-x:hidden; cursor:none; }
+
+/* CURSOR */
+.cur { position:fixed; width:8px; height:8px; background:var(--red); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .15s,height .15s; }
+.cur-r { position:fixed; width:32px; height:32px; border:1px solid var(--red); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); opacity:.35; transition:width .2s,height .2s; }
+body:has(a:hover) .cur, body:has(button:hover) .cur { width:16px; height:16px; }
+body:has(a:hover) .cur-r, body:has(button:hover) .cur-r { width:48px; height:48px; opacity:.55; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:1.75rem 3.5rem; background:linear-gradient(to bottom,var(--white) 70%,transparent); }
+.nav-logo { font-family:var(--serif); font-size:1.1rem; font-weight:400; color:var(--black); text-decoration:none; letter-spacing:.02em; }
+.nav-logo em { color:var(--red); font-style:italic; }
+.nav-links { display:flex; gap:2.5rem; align-items:center; }
+.nav-links a { font-size:.7rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--black); text-decoration:none; opacity:.45; transition:opacity .2s; }
+.nav-links a:hover { opacity:1; }
+.nav-back { display:flex; align-items:center; gap:.5rem; font-size:.68rem; font-weight:500; letter-spacing:.15em; text-transform:uppercase; color:var(--black); text-decoration:none; opacity:.45; transition:opacity .2s; }
+.nav-back:hover { opacity:1; }
+.nav-back::before { content:'←'; font-size:.8rem; }
+
+/* HERO */
+.project-hero { padding:11rem 5rem 5rem; display:grid; grid-template-columns:0.75fr 1fr; gap:0.5rem; align-items:start; border-bottom:1px solid var(--border); }
+.project-label { font-size:.6rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase; color:var(--red); display:flex; align-items:center; gap:.75rem; margin-bottom:1.5rem; opacity:0; animation:fi .8s .2s forwards; }
+.project-label::before { content:''; width:24px; height:1px; background:var(--red); }
+.project-title { font-family:var(--serif); font-size:clamp(3rem,6vw,6.5rem); font-weight:300; line-height:.88; letter-spacing:-.01em; opacity:0; animation:fi .9s .4s forwards; }
+.project-title em { font-style:italic; color:var(--red); }
+.hero-right { display:flex; flex-direction:column; justify-content:flex-end; gap:2rem; opacity:0; animation:fi .8s .6s forwards; }
+.project-desc { font-size:1.17rem; font-weight:300; color:#4a4840; line-height:1.9; max-width:100%; }
+.project-meta { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; padding-top:2rem; border-top:1px solid var(--border); }
+.meta-label { font-size:.55rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin-bottom:.35rem; }
+.meta-value { font-family:var(--serif); font-size:1rem; font-weight:400; color:var(--black); }
+
+/* SECTION */
+.content-section { padding:5rem 3.5rem; }
+.section-heading { font-family:var(--serif); font-size:clamp(2rem,4vw,3.5rem); font-weight:300; line-height:1; margin-bottom:.75rem; }
+.section-sub { font-size:.85rem; font-weight:300; color:var(--muted); max-width:560px; line-height:1.8; margin-bottom:2.5rem; }
+
+/* VIDEO */
+.video-wrapper { width:100%; background:#000; border-radius:2px; overflow:hidden; margin-bottom:2.5rem; }
+.video-wrapper video { width:100%; display:block; max-height:80vh; object-fit:contain; }
+
+/* APP SECTION */
+.app-section { padding:5rem 3.5rem; }
+.app-top { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; background:#F5F0EA; padding:6rem 6rem; border-radius:0; width:calc(100% + 7rem); margin-left:-3.5rem; margin-right:-3.5rem; }
+.app-screen-rows { margin-top:3rem; }
+.app-screen-row { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; padding:4rem 0; background:#fff; border-top:1px solid var(--border); }
+.app-video-col { display:flex; justify-content:center; align-items:center; }
+.app-video-col .phone-center { transform:none; box-shadow:0 4px 6px rgba(0,0,0,.04),0 12px 32px rgba(0,0,0,.10),0 32px 64px rgba(0,0,0,.08); }
+
+.app-screen-row > div:first-child { display:flex; flex-direction:column; gap:1.25rem; min-width:380px; justify-content:flex-start; padding-top:3rem; }
+.app-screen-label { font-size:15px; font-weight:500; letter-spacing:0.25em; text-transform:uppercase; color:var(--red); display:flex; align-items:center; gap:.75rem; }
+.app-screen-label::before { content:''; width:24px; height:1px; background:var(--red); }
+.app-screen-info { font-size:1.05rem; font-weight:300; color:var(--muted); line-height:1.9; max-width:340px; }
+.app-screen-img { width:320px; border-radius:40px; box-shadow:0 4px 6px rgba(0,0,0,.04),0 12px 32px rgba(0,0,0,.10),0 32px 64px rgba(0,0,0,.08); display:block; }
+.phone-center { width:325px; height:704px; border-radius:47px; overflow:hidden; position:relative; flex-shrink:0; }
+.app-editorial-headline { font-family:var(--serif); font-size:4rem; font-weight:400; line-height:1.05; color:var(--black); margin-bottom:1rem; }
+.app-editorial-sub { font-size:13px; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin-bottom:1.5rem; }
+.phone-center video { position:static; width:100%; height:100%; object-fit:cover; display:block; }
+
+/* PLACEHOLDER */
+.placeholder { width:100%; background:var(--white-mid); border:1px dashed var(--border); border-radius:2px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.5rem; }
+.placeholder.video-ph { aspect-ratio:16/9; }
+.placeholder.screen-ph { aspect-ratio:9/16; }
+.placeholder span { font-size:.6rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+
+/* 2 COL IMAGE */
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.grid-2 img { width:100%; display:block; object-fit:cover; }
+.grid-2 .placeholder { aspect-ratio:16/9; }
+
+/* FULL IMAGE */
+.img-full { width:100%; display:block; object-fit:cover; }
+.img-full.placeholder { aspect-ratio:16/9; }
+
+/* NEXT PROJECT */
+.next-project { padding:5rem 3.5rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:2rem; }
+.next-label { font-size:.58rem; font-weight:500; letter-spacing:.25em; text-transform:uppercase; color:var(--muted); margin-bottom:.75rem; }
+.next-title { font-family:var(--serif); font-size:clamp(2rem,4vw,3.5rem); font-weight:300; color:var(--black); text-decoration:none; display:block; transition:color .2s; }
+.next-title:hover { color:var(--red); }
+
+/* FOOTER */
+footer { background:var(--black); padding:2rem 3.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+footer p { font-size:.6rem; letter-spacing:.1em; color:rgba(252,252,250,.25); font-weight:300; }
+.f-logo { font-family:var(--serif); font-size:1.1rem; font-weight:300; color:rgba(252,252,250,.18); }
+.f-logo em { font-style:italic; color:rgba(184,41,26,.45); }
+
+/* REVEAL */
+.rv { opacity:0; transform:translateY(22px); transition:opacity .8s ease,transform .8s ease; }
+.rv.on { opacity:1; transform:translateY(0); }
+
+@keyframes fi { from{opacity:0;}to{opacity:1;} }
+
+@media(max-width:900px){
+  nav { padding:1.25rem 1.5rem; }
+  .project-hero { grid-template-columns:1fr; padding:7rem 1.5rem 3rem; gap:2.5rem; }
+  .content-section,.next-project { padding-left:1.5rem; padding-right:1.5rem; }
+  .app-section { padding:3.5rem 1.5rem; }
+  .app-top { grid-template-columns:1fr; gap:2.5rem; }
+  .app-screen-row { grid-template-columns:1fr; gap:1.5rem; }
+  .app-screen-img { width:100%; }
+  .phone-center { width:100%; height:auto; aspect-ratio:9/19.5; }
+  .grid-2 { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="cur" id="c"></div>
+<div class="cur-r" id="cr"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">kenzie <em>doyle</em></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-back">All Work</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="project-hero">
+  <div class="hero-left">
+    <p class="project-label">Campaign · App Design · Experiential</p>
+    <h1 class="project-title">Kodak<br><em>Collective</em></h1>
+  </div>
+  <div class="hero-right">
+    <p class="project-desc">A conceptual integrated campaign for Kodak built around the idea that physical photos hold more meaning than digital ones. Expressed across four mediums — a mobile app, a traveling photo booth experience, a new product line, and a print ad — the campaign is anchored by the tagline: Memories You Can Feel.</p>
+    <div class="project-meta">
+      <div class="meta-item">
+        <p class="meta-label">Type</p>
+        <p class="meta-value">Conceptual Campaign</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Year</p>
+        <p class="meta-value">2024</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Disciplines</p>
+        <p class="meta-value">Advertising, UI/UX, Experiential</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Tools</p>
+        <p class="meta-value">Figma, Adobe Suite</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KODAK COLLECTIVE APP -->
+<!-- KODAK COLLECTIVE APP -->
+<div class="app-section rv">
+
+  <!-- Top: heading + video -->
+  <div class="app-top">
+    <div>
+      <h2 class="app-editorial-headline">An app for<br>creatives.</h2>
+      <p class="app-editorial-sub">Kodak Collective — App Design</p>
+      <p class="section-sub">A mobile platform where photographers share and showcase Kodak film and instant prints. Built around community, challenges, and a curated gallery — designed to bring film photography culture online without losing what makes it analog.</p>
+    </div>
+    <div class="app-video-col">
+      <div class="phone-center">
+        <iframe src="https://player.vimeo.com/video/1205624296?background=1&autopause=0&loop=1&muted=1" frameborder="0" allow="autoplay; fullscreen" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+      </div>
+      <script src="https://player.vimeo.com/api/player.js"></script>
+    </div>
+  </div>
+
+  <!-- Screen rows -->
+  <div class="app-screen-rows">
+    <div class="app-screen-row rv">
+      <div>
+        <p class="app-screen-label">Homepage</p>
+        <p class="app-screen-info">The main feed — recent uploads from followed photographers, featured film rolls, and community challenges surfaced in a clean, scrollable layout.</p>
+      </div>
+      <div>
+        <img src="images/kodak-app-homepage.png" alt="Homepage screen" class="app-screen-img">
+      </div>
+    </div>
+    <div class="app-screen-row rv">
+      <div>
+        <p class="app-screen-label">Profile</p>
+        <p class="app-screen-info">A photographer's personal archive — organized by roll, format, and film stock. Followers, challenge history, and featured shots all in one place.</p>
+      </div>
+      <div>
+        <img src="images/kodak-app-profile.png" alt="Profile screen" class="app-screen-img">
+      </div>
+    </div>
+    <div class="app-screen-row rv">
+      <div>
+        <p class="app-screen-label">Gallery</p>
+        <p class="app-screen-info">A curated discovery space filtered by camera model, film stock, and shooting location — designed to surface the best analog work from the community.</p>
+      </div>
+      <div>
+        <img src="images/kodak-app-gallery.png" alt="Gallery screen" class="app-screen-img">
+      </div>
+    </div>
+    <div class="app-screen-row rv">
+      <div>
+        <p class="app-screen-label">Friends</p>
+        <p class="app-screen-info">A social layer built around shared rolls and collaborative shoots — see what your network is shooting, comment on frames, and plan shoots together.</p>
+      </div>
+      <div>
+        <img src="images/kodak-app-friends.png" alt="Friends screen" class="app-screen-img">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:0 3.5rem;">
+
+<!-- KODAK PHOTO BOOTH -->
+<div class="content-section rv">
+  <h2 class="section-heading">Kodak Photo Booth</h2>
+  <p class="section-sub">A traveling pop-up experience that brings the nostalgia of instant photography to events, festivals, and city streets. Guests walk away with a branded film-style photo strip and a QR code linking to their digital copy.</p>
+  <div class="rv" style="display:flex;justify-content:center;">
+    <img src="images/kodak-photobooth.png" alt="Kodak Photo Booth" style="width:50%;border-radius:4px;display:block;">
+  </div>
+</div>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:0 3.5rem;">
+
+<!-- KODAK MEMORY KIT -->
+<div class="content-section rv">
+  <h2 class="section-heading">Kodak Pocket Pix</h2>
+  <p class="section-sub">A 3MP pocket-sized digital camera designed for everyday capture. Available in four colorways — White, Charcoal Gray, Slate Blue, and Forest Green — the Pocket Pix is rechargeable, ultra compact, and built to go everywhere you do.</p>
+  <div class="rv" style="display:flex;justify-content:center;">
+    <img src="images/kodak-pocketpix.png" alt="Kodak Pocket Pix" style="width:50%;border-radius:4px;display:block;">
+  </div>
+</div>
+
+<!-- NEXT PROJECT -->
+<div class="next-project rv">
+  <div>
+    <p class="next-label">Next Project</p>
+    <a href="two-chicks.html" class="next-title">Two Chicks →</a>
+  </div>
+  <a href="index.html" class="nav-back" style="opacity:.45;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;color:var(--black);display:flex;align-items:center;gap:.5rem;transition:opacity .2s;">← Back to All Work</a>
+</div>
+
+<footer>
+  <p>© 2026 Kenzie Doyle. All rights reserved.</p>
+  <span class="f-logo">kenzie <em>doyle</em></span>
+  <p>Michigan · Open to opportunities</p>
+</footer>
+
+<script>
+const C=document.getElementById('c'),R=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;C.style.left=mx+'px';C.style.top=my+'px';});
+(function t(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;R.style.left=rx+'px';R.style.top=ry+'px';requestAnimationFrame(t);})();
+
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});
+},{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

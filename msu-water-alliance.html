@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSU Water Alliance — Kenzie Doyle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #FCFCFA;
+  --white-mid: #f2f0eb;
+  --black: #1a1814;
+  --red: #b8291a;
+  --muted: #8a8478;
+  --border: rgba(26,24,20,.1);
+  --serif: 'Cormorant Garamond', serif;
+  --sans: 'Jost', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background:var(--white); color:var(--black); font-family:var(--sans); font-size:16px; line-height:1.6; overflow-x:hidden; cursor:none; }
+
+/* CURSOR */
+.cur { position:fixed; width:8px; height:8px; background:var(--red); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .15s,height .15s; }
+.cur-r { position:fixed; width:32px; height:32px; border:1px solid var(--red); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); opacity:.35; transition:width .2s,height .2s; }
+body:has(a:hover) .cur, body:has(button:hover) .cur { width:16px; height:16px; }
+body:has(a:hover) .cur-r, body:has(button:hover) .cur-r { width:48px; height:48px; opacity:.55; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:1.75rem 3.5rem; background:linear-gradient(to bottom,var(--white) 70%,transparent); }
+.nav-logo { font-family:var(--serif); font-size:1.1rem; font-weight:400; color:var(--black); text-decoration:none; letter-spacing:.02em; }
+.nav-logo em { color:var(--red); font-style:italic; }
+.nav-links { display:flex; gap:2.5rem; align-items:center; }
+.nav-links a { font-size:.7rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--black); text-decoration:none; opacity:.45; transition:opacity .2s; }
+.nav-links a:hover { opacity:1; }
+.nav-back { display:flex; align-items:center; gap:.5rem; font-size:.68rem; font-weight:500; letter-spacing:.15em; text-transform:uppercase; color:var(--black); text-decoration:none; opacity:.45; transition:opacity .2s; }
+.nav-back:hover { opacity:1; }
+.nav-back::before { content:'←'; font-size:.8rem; }
+
+/* HERO */
+.project-hero { padding:11rem 5rem 5rem; display:grid; grid-template-columns:0.75fr 1fr; gap:0.5rem; align-items:start; border-bottom:1px solid var(--border); }
+.project-label { font-size:.6rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase; color:var(--red); display:flex; align-items:center; gap:.75rem; margin-bottom:1.5rem; opacity:0; animation:fi .8s .2s forwards; }
+.project-label::before { content:''; width:24px; height:1px; background:var(--red); }
+.project-title { font-family:var(--serif); font-size:clamp(3rem,6vw,6rem); font-weight:300; line-height:.92; letter-spacing:-.01em; opacity:0; animation:fi .9s .4s forwards; }
+.project-title em { font-style:italic; color:var(--red); }
+.hero-right { display:flex; flex-direction:column; justify-content:flex-end; gap:2rem; opacity:0; animation:fi .8s .6s forwards; }
+.project-desc { font-size:1.17rem; font-weight:300; color:#4a4840; line-height:1.9; max-width:100%; }
+.project-meta { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; padding-top:2rem; border-top:1px solid var(--border); }
+.meta-label { font-size:.55rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin-bottom:.35rem; }
+.meta-value { font-family:var(--serif); font-size:1rem; font-weight:400; color:var(--black); }
+
+/* VIDEO SECTIONS */
+.video-section { background:var(--white-mid); padding:5rem 3.5rem; }
+.video-header { margin-bottom:2.5rem; }
+.section-heading { font-family:var(--serif); font-size:clamp(2rem,4vw,3.5rem); font-weight:300; line-height:1; }
+.video-header p { font-size:.85rem; font-weight:300; color:var(--muted); max-width:480px; line-height:1.8; margin-top:.75rem; }
+.video-meta { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; padding:2rem 0; border-top:1px solid var(--border); margin-bottom:2rem; }
+.video-wrapper { position:relative; width:100%; background:#000; border-radius:2px; overflow:hidden; }
+.video-wrapper video { width:100%; height:100%; display:block; object-fit:cover; }
+
+/* RESCOPE SECTION */
+.rescope-section { background:var(--white-mid); padding:5rem 3.5rem; }
+.rescope-intro { margin-bottom:3.5rem; }
+.rescope-intro h2 { font-family:var(--serif); font-size:clamp(2rem,4vw,3.5rem); font-weight:300; line-height:1; margin-bottom:.75rem; }
+.rescope-intro p { font-size:.85rem; font-weight:300; color:var(--muted); max-width:560px; line-height:1.8; }
+
+/* RESCOPE GRID */
+.rescope-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.rescope-item { display:flex; flex-direction:column; gap:.75rem; }
+.rescope-label { font-size:.58rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
+
+/* PLACEHOLDER TILES */
+.placeholder-tile { width:100%; aspect-ratio:16/9; background:var(--white); border:1px solid var(--border); border-radius:2px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.75rem; }
+.placeholder-tile img { max-width:55%; max-height:55%; object-fit:contain; opacity:.7; }
+.placeholder-tile .tile-label { font-size:.6rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+
+/* COLOR SWATCH TILE */
+.color-tile { width:100%; aspect-ratio:16/9; background:var(--white); border:1px solid var(--border); border-radius:2px; overflow:hidden; display:flex; flex-direction:column; }
+.swatch-row { flex:1; display:flex; }
+.swatch { flex:1; }
+
+/* TYPOGRAPHY TILE */
+.type-tile { width:100%; aspect-ratio:16/9; background:var(--white); border:1px solid var(--border); border-radius:2px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.35rem; padding:1.5rem; }
+.type-tile .t-thin { font-size:clamp(1rem,2.5vw,1.75rem); font-weight:300; letter-spacing:.1em; color:var(--black); opacity:.6; font-family:'Jost', sans-serif; }
+.type-tile .t-bold { font-size:clamp(1rem,2.5vw,1.75rem); font-weight:700; letter-spacing:.08em; color:var(--black); font-family:'Jost', sans-serif; }
+.type-tile .t-divider { width:60%; height:1px; background:var(--border); margin:.5rem 0; }
+
+/* NAME CARD TILE */
+.namecard-tile { width:100%; aspect-ratio:16/9; background:#f0f0f0; border:1px solid var(--border); border-radius:2px; display:flex; align-items:center; justify-content:center; }
+.namecard-inner { display:flex; flex-direction:column; gap:0; }
+.namecard-name { background:#153B50; color:#fff; font-family:'Jost', sans-serif; font-weight:700; font-size:clamp(.8rem,2vw,1.4rem); letter-spacing:.12em; padding:.6rem 2rem .6rem 1.5rem; clip-path:polygon(0 0, 96% 0, 100% 100%, 0 100%); }
+.namecard-title { background:#7CA1CB; color:#fff; font-family:'Jost', sans-serif; font-weight:400; font-size:clamp(.55rem,1.2vw,.85rem); letter-spacing:.06em; padding:.4rem 1.5rem; align-self:flex-start; margin-top:2px; }
+
+/* VIDEO CARD TILE */
+.videocard-tile { width:100%; aspect-ratio:16/9; background:#e8e8e8; border:1px solid var(--border); border-radius:2px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.5rem; position:relative; overflow:hidden; }
+.videocard-tile .vc-bg { position:absolute; inset:0; background:linear-gradient(135deg,#c8d8e8 0%,#a8bccf 100%); opacity:.4; }
+.videocard-tile .vc-text { position:relative; font-family:'Jost',sans-serif; font-size:clamp(1.2rem,3vw,2.5rem); font-weight:300; letter-spacing:.3em; color:#2a2a2a; opacity:.35; text-align:center; }
+.videocard-tile .vc-sub { position:relative; font-family:'Jost',sans-serif; font-size:clamp(.5rem,1vw,.7rem); font-weight:500; letter-spacing:.25em; text-transform:uppercase; color:#2a2a2a; opacity:.3; }
+
+/* NEXT PROJECT */
+.next-project { padding:5rem 3.5rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:2rem; }
+.next-label { font-size:.58rem; font-weight:500; letter-spacing:.25em; text-transform:uppercase; color:var(--muted); margin-bottom:.75rem; }
+.next-title { font-family:var(--serif); font-size:clamp(2rem,4vw,3.5rem); font-weight:300; color:var(--black); text-decoration:none; display:block; transition:color .2s; }
+.next-title:hover { color:var(--red); }
+
+/* FOOTER */
+footer { background:var(--black); padding:2rem 3.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+footer p { font-size:.6rem; letter-spacing:.1em; color:rgba(252,252,250,.25); font-weight:300; }
+.f-logo { font-family:var(--serif); font-size:1.1rem; font-weight:300; color:rgba(252,252,250,.18); }
+.f-logo em { font-style:italic; color:rgba(184,41,26,.45); }
+
+/* REVEAL */
+.rv { opacity:0; transform:translateY(22px); transition:opacity .8s ease,transform .8s ease; }
+.rv.on { opacity:1; transform:translateY(0); }
+
+@keyframes fi { from{opacity:0;}to{opacity:1;} }
+
+@media(max-width:900px){
+  nav{padding:1.25rem 1.5rem;}
+  .project-hero{grid-template-columns:1fr;padding:7rem 1.5rem 3rem;gap:2.5rem;}
+  .video-section,.rescope-section,.next-project{padding-left:1.5rem;padding-right:1.5rem;}
+  .rescope-grid{grid-template-columns:1fr;}
+  .next-project{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<div class="cur" id="c"></div>
+<div class="cur-r" id="cr"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">kenzie <em>doyle</em></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-back">All Work</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="project-hero">
+  <div class="hero-left">
+    <p class="project-label">Videography · Editing · Education</p>
+    <h1 class="project-title">MSU Water<br><em>Alliance</em></h1>
+  </div>
+  <div class="hero-right">
+    <p class="project-desc">A series of educational videos produced for the MSU Water Alliance, translating complex environmental issues into clear, accessible storytelling for a broad public audience. Created while working at 42pointSEVEN, the work spans two distinct topics — each demanding its own visual approach — with an emphasis on pacing, clarity, and communicating science without losing the viewer.</p>
+    <div class="project-meta">
+      <div class="meta-item">
+        <p class="meta-label">Type</p>
+        <p class="meta-value">Client Work</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Year</p>
+        <p class="meta-value">2025</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Disciplines</p>
+        <p class="meta-value">Videography, Editing, Strategy</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Tools</p>
+        <p class="meta-value">Premiere Pro, After Effects</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO 1: PFAS -->
+<div class="video-section rv">
+  <div class="video-header">
+    <h2 class="section-heading">PFAS: Forever Chemicals</h2>
+    <p>An explainer on PFAS contamination — what these chemicals are, how they enter water systems, and why they persist. Built for a general audience with no prior scientific background.</p>
+  </div>
+  <div class="video-meta">
+    <div class="meta-item">
+      <p class="meta-label">Role</p>
+      <p class="meta-value">Videographer, Editor</p>
+    </div>
+    <div class="meta-item">
+      <p class="meta-label">Client</p>
+      <p class="meta-value">MSU Water Alliance</p>
+    </div>
+    <div class="meta-item">
+      <p class="meta-label">Format</p>
+      <p class="meta-value">Educational Video</p>
+    </div>
+    <div class="meta-item">
+      <p class="meta-label">Agency</p>
+      <p class="meta-value">42pointSEVEN</p>
+    </div>
+  </div>
+  <div class="video-wrapper rv">
+    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1205623759?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="wateralliance-pfas"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+  </div>
+</div>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:0;">
+
+<!-- VIDEO 2: SEPTIC -->
+<div class="video-section rv">
+  <div class="video-header">
+    <h2 class="section-heading">Septic Systems</h2>
+    <p>A plain-language guide to how residential septic systems work and why they matter for water quality. Designed to make a technical subject approachable and actionable for homeowners and community members.</p>
+  </div>
+  <div class="video-meta">
+    <div class="meta-item">
+      <p class="meta-label">Role</p>
+      <p class="meta-value">Videographer, Editor, Strategist</p>
+    </div>
+    <div class="meta-item">
+      <p class="meta-label">Client</p>
+      <p class="meta-value">MSU Water Alliance</p>
+    </div>
+    <div class="meta-item">
+      <p class="meta-label">Format</p>
+      <p class="meta-value">Educational Video</p>
+    </div>
+    <div class="meta-item">
+      <p class="meta-label">Agency</p>
+      <p class="meta-value">42pointSEVEN</p>
+    </div>
+  </div>
+  <div class="video-wrapper rv">
+    <div style="padding:75% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1205624259?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="wateralliance-septic-systems"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+  </div>
+</div>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:0;">
+
+<!-- CREATIVE RESCOPE -->
+<div class="rescope-section rv">
+  <div class="rescope-intro">
+    <h2>Creative Rescope</h2>
+    <p>Beyond filming and editing, I developed and presented a full creative rescope to the MSU Water Alliance — proposing a refreshed visual direction for the Septic Systems video and future productions in the series. The rescope covered color, typography, motion graphics, and branded assets, and was delivered directly to the client.</p>
+  </div>
+
+  <div class="rescope-grid">
+
+    <!-- LOGO -->
+    <div class="rescope-item rv">
+      <p class="rescope-label">Logo</p>
+      <img src="images/wateralliance-logo.png" alt="MSU Water Alliance logo" style="width: 85%;">
+    </div>
+
+    <!-- COLOR PALETTE -->
+    <div class="rescope-item rv">
+      <p class="rescope-label">Color Palette</p>
+      <div class="color-tile">
+        <div class="swatch-row">
+          <div class="swatch" style="background:#18453B;"></div>
+          <div class="swatch" style="background:#7CA1CB;"></div>
+          <div class="swatch" style="background:#153B50;"></div>
+          <div class="swatch" style="background:#000000;"></div>
+          <div class="swatch" style="background:#f9f9f9; border-right:1px solid var(--border);"></div>
+        </div>
+        <div style="display:flex;padding:.6rem 1rem;gap:0;flex:0 0 auto;">
+          <div style="flex:1;font-size:.5rem;font-weight:500;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;">#18453B</div>
+          <div style="flex:1;font-size:.5rem;font-weight:500;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;">#7CA1CB</div>
+          <div style="flex:1;font-size:.5rem;font-weight:500;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;">#153B50</div>
+          <div style="flex:1;font-size:.5rem;font-weight:500;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;">#000000</div>
+          <div style="flex:1;font-size:.5rem;font-weight:500;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;">#f9f9f9</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TYPOGRAPHY -->
+    <div class="rescope-item rv">
+      <p class="rescope-label">Typography</p>
+      <div class="type-tile">
+        <span class="t-thin">Metropolis Thin</span>
+        <span class="t-thin" style="font-weight:400;">Metropolis Regular</span>
+        <div class="t-divider"></div>
+        <span class="t-bold">Metropolis Bold</span>
+        <span class="t-bold" style="font-weight:800;">Metropolis Extrabold</span>
+      </div>
+    </div>
+
+    <!-- NAME CARDS -->
+    <div class="rescope-item rv">
+      <p class="rescope-label">Name Cards</p>
+      <div class="namecard-tile">
+        <div class="namecard-inner">
+          <div class="namecard-name">JANE DOE</div>
+          <div class="namecard-title">Professor of Natural Resources</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTRO CARD -->
+    <div class="rescope-item rv">
+      <p class="rescope-label">Intro Card</p>
+      <div class="videocard-tile">
+        <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          <source src="videos/wateralliance-intro.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <!-- OUTRO CARD -->
+    <div class="rescope-item rv">
+      <p class="rescope-label">Outro Card</p>
+      <div class="videocard-tile">
+        <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          <source src="videos/wateralliance-outro.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- NEXT PROJECT -->
+<div class="next-project rv">
+  <div>
+    <p class="next-label">Next Project</p>
+    <a href="kodak.html" class="next-title">Kodak Collective →</a>
+  </div>
+  <a href="index.html" class="nav-back" style="opacity:.45;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;color:var(--black);display:flex;align-items:center;gap:.5rem;transition:opacity .2s;">← Back to All Work</a>
+</div>
+
+<footer>
+  <p>© 2026 Kenzie Doyle. All rights reserved.</p>
+  <span class="f-logo">kenzie <em>doyle</em></span>
+  <p>Michigan · Open to opportunities</p>
+</footer>
+
+<script>
+const C=document.getElementById('c'),R=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;C.style.left=mx+'px';C.style.top=my+'px';});
+(function t(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;R.style.left=rx+'px';R.style.top=ry+'px';requestAnimationFrame(t);})();
+
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});
+},{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

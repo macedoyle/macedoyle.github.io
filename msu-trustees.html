@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSU Board of Trustees — Kenzie Doyle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #FCFCFA;
+  --white-mid: #f2f0eb;
+  --black: #1a1814;
+  --red: #b8291a;
+  --muted: #8a8478;
+  --border: rgba(26,24,20,.1);
+  --serif: 'Cormorant Garamond', serif;
+  --sans: 'Jost', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background:var(--white); color:var(--black); font-family:var(--sans); font-size:16px; line-height:1.6; overflow-x:hidden; cursor:none; }
+
+/* CURSOR */
+.cur { position:fixed; width:8px; height:8px; background:var(--red); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .15s,height .15s; }
+.cur-r { position:fixed; width:32px; height:32px; border:1px solid var(--red); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); opacity:.35; transition:width .2s,height .2s; }
+body:has(a:hover) .cur, body:has(button:hover) .cur { width:16px; height:16px; }
+body:has(a:hover) .cur-r, body:has(button:hover) .cur-r { width:48px; height:48px; opacity:.55; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:1.75rem 3.5rem; background:linear-gradient(to bottom,var(--white) 70%,transparent); }
+.nav-logo { font-family:var(--serif); font-size:1.1rem; font-weight:400; color:var(--black); text-decoration:none; letter-spacing:.02em; }
+.nav-logo em { color:var(--red); font-style:italic; }
+.nav-links { display:flex; gap:2.5rem; align-items:center; }
+.nav-links a { font-size:.7rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--black); text-decoration:none; opacity:.45; transition:opacity .2s; }
+.nav-links a:hover { opacity:1; }
+.nav-back { display:flex; align-items:center; gap:.5rem; font-size:.68rem; font-weight:500; letter-spacing:.15em; text-transform:uppercase; color:var(--black); text-decoration:none; opacity:.45; transition:opacity .2s; }
+.nav-back:hover { opacity:1; }
+.nav-back::before { content:'←'; font-size:.8rem; }
+
+/* HERO */
+.project-hero { padding:11rem 5rem 5rem; display:grid; grid-template-columns:0.75fr 1fr; gap:0.5rem; align-items:start; border-bottom:1px solid var(--border); }
+.hero-left {}
+.project-label { font-size:.6rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase; color:var(--red); display:flex; align-items:center; gap:.75rem; margin-bottom:1.5rem; opacity:0; animation:fi .8s .2s forwards; }
+.project-label::before { content:''; width:24px; height:1px; background:var(--red); }
+.project-title { font-family:var(--serif); font-size:clamp(3rem,6vw,6rem); font-weight:300; line-height:.92; letter-spacing:-.01em; opacity:0; animation:fi .9s .4s forwards; }
+.project-title em { font-style:italic; color:var(--red); }
+.hero-right { display:flex; flex-direction:column; justify-content:flex-end; gap:2rem; opacity:0; animation:fi .8s .6s forwards; }
+.project-desc { font-size:1.17rem; font-weight:300; color:#4a4840; line-height:1.9; max-width:100%; }
+.project-meta { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; padding-top:2rem; border-top:1px solid var(--border); }
+.meta-item {}
+.meta-label { font-size:.55rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin-bottom:.35rem; }
+.meta-value { font-family:var(--serif); font-size:1rem; font-weight:400; color:var(--black); }
+
+/* VIDEO SECTION */
+.video-section { background:var(--white-mid); padding:5rem 3.5rem; }
+.video-header { margin-bottom:2.5rem; }
+.section-heading { font-family:var(--serif); font-size:clamp(2rem,4vw,3.5rem); font-weight:300; line-height:1; }
+.video-header p { font-size:.85rem; font-weight:300; color:var(--muted); max-width:480px; line-height:1.8; margin-top:.75rem; }
+.video-wrapper { position:relative; width:100%; background:#000; border-radius:2px; overflow:hidden; }
+.video-wrapper video { width:100%; display:block; max-height:75vh; object-fit:contain; }
+
+/* NEXT PROJECT */
+.next-project { padding:5rem 3.5rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:2rem; }
+.next-label { font-size:.58rem; font-weight:500; letter-spacing:.25em; text-transform:uppercase; color:var(--muted); margin-bottom:.75rem; }
+.next-title { font-family:var(--serif); font-size:clamp(2rem,4vw,3.5rem); font-weight:300; color:var(--black); text-decoration:none; display:block; transition:color .2s; }
+.next-title:hover { color:var(--red); }
+
+/* FOOTER */
+footer { background:var(--black); padding:2rem 3.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+footer p { font-size:.6rem; letter-spacing:.1em; color:rgba(252,252,250,.25); font-weight:300; }
+.f-logo { font-family:var(--serif); font-size:1.1rem; font-weight:300; color:rgba(252,252,250,.18); }
+.f-logo em { font-style:italic; color:rgba(184,41,26,.45); }
+
+/* REVEAL */
+.rv { opacity:0; transform:translateY(22px); transition:opacity .8s ease,transform .8s ease; }
+.rv.on { opacity:1; transform:translateY(0); }
+
+@keyframes fi { from{opacity:0;}to{opacity:1;} }
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{padding:1.25rem 1.5rem;}
+  .project-hero{grid-template-columns:1fr;padding:7rem 1.5rem 3rem;gap:2.5rem;}
+  .video-section,.next-project{padding-left:1.5rem;padding-right:1.5rem;}
+  .next-project{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<div class="cur" id="c"></div>
+<div class="cur-r" id="cr"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">kenzie <em>doyle</em></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-back">All Work</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- PROJECT HERO -->
+<section class="project-hero">
+  <div class="hero-left">
+    <p class="project-label">Videography · Editing · Institutional</p>
+    <h1 class="project-title">MSU Board<br>of <em>Trustees</em></h1>
+  </div>
+  <div class="hero-right">
+    <p class="project-desc">An institutional profile of the Michigan State University Board of Trustees — examining who they are and the role they serve within the university. Produced as a videographer for 42pointSEVEN, the piece balances clarity and visual polish, with deliberate attention to pacing, composition, and the kind of editorial precision that institutional storytelling demands.</p>
+    <div class="project-meta">
+      <div class="meta-item">
+        <p class="meta-label">Type</p>
+        <p class="meta-value">Client Work</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Year</p>
+        <p class="meta-value">2024</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Disciplines</p>
+        <p class="meta-value">Videography, Editing</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Tools</p>
+        <p class="meta-value">Premiere Pro, After Effects</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SECTION -->
+<div class="video-section rv">
+  <div class="video-header">
+    <h2 class="section-heading">The Film</h2>
+    <p>Filmed and edited for Michigan State University's institutional communications team.</p>
+  </div>
+  <div class="video-wrapper rv">
+    <div style="padding:75% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1205623452?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Board Oof Trustees Video"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+  </div>
+</div>
+
+<!-- NEXT PROJECT -->
+<div class="next-project rv">
+  <div>
+    <p class="next-label">Next Project</p>
+    <a href="vera-bradley.html" class="next-title">Vera Bradley →</a>
+  </div>
+  <a href="index.html" class="nav-back" style="opacity:.45;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;color:var(--black);display:flex;align-items:center;gap:.5rem;transition:opacity .2s;">← Back to All Work</a>
+</div>
+
+<footer>
+  <p>© 2026 Kenzie Doyle. All rights reserved.</p>
+  <span class="f-logo">kenzie <em>doyle</em></span>
+  <p>Michigan · Open to opportunities</p>
+</footer>
+
+<script>
+// Cursor
+const C=document.getElementById('c'),R=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;C.style.left=mx+'px';C.style.top=my+'px';});
+(function t(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;R.style.left=rx+'px';R.style.top=ry+'px';requestAnimationFrame(t);})();
+
+// Scroll reveal
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});
+},{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
