@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(open -a \"Google Chrome\" \"http://localhost:8934/kodak.html\")",
+      "Bash(open \"http://localhost:8934/kodak.html\")",
+      "Bash(osascript -e 'tell application \"Google Chrome\" to activate')",
+      "Bash(osascript -e 'tell application \"Google Chrome\" to execute front window'\\\\''s active tab javascript \"document.querySelector\\(\\\\\".phone-center\\\\\"\\).scrollIntoView\\({block:\\\\\"center\\\\\"}\\); document.title\"')",
+      "Bash(osascript -e 'tell application \"System Events\" to keystroke \"j\" using {}')",
+      "Bash(osascript -e 'tell application \"System Events\" to key code 121')",
+      "Bash(osascript -e 'quit app \"Google Chrome\"')",
+      "Bash(pip3 --version)"
+    ]
+  }
+}
