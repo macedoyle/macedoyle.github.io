@@ -556,6 +556,10 @@ const P={
 const modal=document.getElementById('modal');
 document.querySelectorAll('.wi').forEach(wi=>{
   wi.addEventListener('click',()=>{
+    // Card has an inline onclick that navigates — opening the modal here would
+    // leave it in the open state when the page is cached, causing it to appear
+    // on back navigation. Skip modal entirely for cards that navigate on click.
+    if(wi.hasAttribute('onclick'))return;
     const p=P[wi.dataset.project];if(!p)return;
     document.getElementById('mcat').textContent=p.cat;
     document.getElementById('mtitle').textContent=p.title;
@@ -571,6 +575,9 @@ document.getElementById('mcl').addEventListener('click',closeM);
 modal.addEventListener('click',e=>{if(e.target===modal)closeM();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM();});
 function closeM(){modal.classList.remove('open');document.body.style.overflow='';}
+// Reset modal state when page is restored from bfcache (back/forward navigation).
+// DOMContentLoaded and load do not fire for bfcache restores; pageshow + persisted does.
+window.addEventListener('pageshow',e=>{if(e.persisted)closeM();});
 
 // Form
 function hf(e){
